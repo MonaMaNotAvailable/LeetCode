@@ -19,7 +19,7 @@ def git_add_commit_push(commit_message):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python3 automate.py <commit message>")
+        print("Usage: python3 automate.py 'commit message(if space exists)'")
         sys.exit(1)
 
     commit_message = sys.argv[1]
