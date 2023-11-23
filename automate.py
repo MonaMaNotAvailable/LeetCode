@@ -3,6 +3,10 @@ import sys
 
 def git_add_commit_push(commit_message):
     try:
+
+	# Git status
+        subprocess.run(["git", "status"])
+
         # Git add
         subprocess.run(["git", "add", "."])
 
