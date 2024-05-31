@@ -3,19 +3,20 @@ class Solution:
         output = []
 
         def backtrack(currentNum, currentComb, remainingValue):
-
-            #base/stopping condition
+            # base/stopping condition: if the combination is of the desired length k
             if len(currentComb)==k:
+                # if the sum of the combination is equal to the target n
                 if remainingValue==0: #sum(currentComb)==n
                     output.append(currentComb)
                 else:
                     return
 
-            #generate combination
-            for i in range(currentNum+1,10):
+            # generate combination: iterate from currentNum to 9
+            for i in range(currentNum,10):
                 if i <= remainingValue:
-                    backtrack(i, currentComb+[i], remainingValue-i)
+                    # recursively call backtrack with the updated combination and remaining value
+                    backtrack(i+1, currentComb+[i], remainingValue-i)
 
-        #start
-        backtrack(0, [], n)
+        # start the backtracking with 1
+        backtrack(1, [], n)
         return output
