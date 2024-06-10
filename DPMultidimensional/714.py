@@ -1,6 +1,6 @@
 class Solution:
     def maxProfit(self, prices: List[int], fee: int) -> int:
-        # Approach 1: 2 variables to store the maximum profit
+        # Approach 1: 2 variables to store the maximum profit, time O(N), space O(1)
         buy = float('-inf') # maximum profit if we bought a stock so far
         sell = 0  # maximum profit if we sold a stock so far
 
@@ -13,7 +13,7 @@ class Solution:
 
 
 
-        # # Approach 2: dp arrays to store the maximum profit
+        # # Approach 2: dp arrays to store the maximum profit, time O(N), space O(N)
         # n = len(prices)
         # hold = [0] * n  # hold[i] is the max profit on day i with a stock in hand
         # cash = [0] * n  # cash[i] is the max profit on day i without a stock in hand
@@ -29,7 +29,7 @@ class Solution:
 
 
 
-        # # Approach 3: recursion TLE: pass 19/44
+        # # Approach 3: recursion TLE: pass 19/44, time O(2^N), space O(N)
         # def recursiveProfit(tradingDay:int, previousState:string, currentProfit:int) -> int:
         #     # base case
         #     if tradingDay == len(prices)-1:
