@@ -16,6 +16,26 @@ class Solution:
 
 
 
+        # approach 1.1: a concise version, time O(nlogn), space O(n)
+        # `piles` is a patience-sorting structure. It does NOT store the actual LIS — only its length is meaningful. Piles is always sorted in ascending order.
+        piles = []
+
+        for n in nums:
+            # Binary search for the leftmost position where piles[idx] >= n. This is where n can "replace" to keep piles as small as possible, which leaves more room for future numbers to extend the sequence.
+            idx = bisect.bisect_left(piles, n)
+
+            if idx == len(piles):
+                # n is larger than everything in piles, it genuinely extends the longest subsequence found so far.
+                piles.append(n)
+            else:
+                # n fits somewhere in the middle (or at the front). Replace piles[idx] with n to "lower the ceiling" at this length, making it easier for future numbers to continue a subsequence of the same or greater length.
+                piles[idx] = n
+
+        # len(piles) equals the length of the LIS.
+        return len(piles)
+    
+
+
         # approach 2: dp, time O(n^2), space O(n)
         n = len(nums)
         dp = [1] * n  # initialize dp array where each element starts with length 1 (itself)
